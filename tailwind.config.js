@@ -5,14 +5,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#3b82f6",
-        secondary: "#a855f7",
+        primary: "#5BC0BE",
+        secondary: "#3A506B",
         info: "#38bdf8",
         success: "#22c55e",
         warning: "#eab308",
         danger: "#ef4444",
-        dark: "#0f172a",
-        white: "#f1f5f9",
+        base: "#1C2541",
+        dark: "#0B132B",
+        white: "#FFFFFF",
         black: "#020617",
       },
     },
