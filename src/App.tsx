@@ -1,44 +1,29 @@
+import CurrentWeather from "./components/CurrentWeather";
+import Forecast from "./components/Forecast";
+import Navbar from "./components/Navbar";
+
 function App() {
   return (
-    <div className="min-h-screen h-screen">
-      <div className="fixed top-0 left-0 w-full px-4 flex justify-between items-center border-2 border-red-500 text-red-500 min-h-10">
-        <span>menu</span>
-        <span>location</span>
-      </div>
-      <div className="max-w-lg m-auto h-full pt-10 flex flex-col border-2 border-black">
-        <div className="border-2 border-blue-500 h-full flex flex-col justify-center items-center gap-4">
-          <div className="h-32 w-32 border border-black">Weather Icon</div>
-          <h3 className="border border-lime-500 text-4xl">grades</h3>
-          <div className="border border-amber-500">
-            <span className="mr-4">min: grades</span>
-            <span>max: grades</span>
+    <div className="h-full min-h-screen">
+      <Navbar />
+      {/* app container */}
+      <div className="m-auto flex h-screen min-h-[600px] max-w-lg flex-col border-2 border-black pt-10">
+        <CurrentWeather />
+
+        {/* forecast container */}
+        <div className="h-3/4 border-4 border-green-500">
+          {/* date */}
+          <div className="flex h-8 items-center justify-between border-2 border-yellow-500 px-4">
+            <span>today</span>
+            <span>date</span>
           </div>
-        </div>
-        <div className="border-4 border-green-500 h-full">
-          <div className="h-8 border-2 border-yellow-500">
-            Lorem ipsum dolor sit amet consec
-          </div>
-          <div className="border-2 border-violet-500 h-[calc(100%-2rem)] overflow-x-scroll flex flex-nowrap gap-4">
-            <div className="w-24 border border-rose-500 flex-shrink-0 flex flex-col items-center justify-evenly">
-              <div className="border border-black">grades</div>
-              <div className="border border-black">icon</div>
-              <div className="border border-black">hour</div>
-            </div>
-            <div className="w-24 border border-rose-500 flex-shrink-0 flex flex-col items-center justify-evenly">
-              <div className="border border-black">grades</div>
-              <div className="border border-black">icon</div>
-              <div className="border border-black">hour</div>
-            </div>
-            <div className="w-24 border border-rose-500 flex-shrink-0 flex flex-col items-center justify-evenly">
-              <div className="border border-black">grades</div>
-              <div className="border border-black">icon</div>
-              <div className="border border-black">hour</div>
-            </div>
-            <div className="w-24 border border-rose-500 flex-shrink-0 flex flex-col items-center justify-evenly">
-              <div className="border border-black">grades</div>
-              <div className="border border-black">icon</div>
-              <div className="border border-black">hour</div>
-            </div>
+          {/* forecasts */}
+          <div className="flex h-[calc(100%-2rem)] flex-nowrap gap-4 overflow-x-scroll border-2 border-violet-500">
+            <div>{/* space */}</div>
+
+            {[1, 2, 3, 4, 5].map((num) => (
+              <Forecast key={num} />
+            ))}
           </div>
         </div>
       </div>
