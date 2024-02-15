@@ -1,9 +1,8 @@
 import { createContext } from "react";
+import { SidebarState } from "./sidebarState";
 
 export interface AppState {
-  openSidebar: boolean;
-  toggleSidebar: () => void;
+  sidebar: SidebarState;
 }
 
 export const AppContext = createContext({} as AppState);
-

@@ -1,15 +1,12 @@
-import { type ReactNode, useState } from "react";
+import { type ReactNode } from "react";
 import { AppContext } from "./state";
+import sidebarState from "./sidebarState";
 
 function AppProvider({ children }: { children: ReactNode }) {
-  const [openSidebar, setOpenSidebar] = useState(false);
-
-  const toggleSidebar = () => setOpenSidebar((open) => !open);
+  const sidebar = sidebarState();
 
   return (
-    <AppContext.Provider value={{ openSidebar, toggleSidebar }}>
-      {children}
-    </AppContext.Provider>
+    <AppContext.Provider value={{ sidebar }}>{children}</AppContext.Provider>
   );
 }
 
