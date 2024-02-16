@@ -1,9 +1,13 @@
+import { useState } from "react";
 import CurrentWeather from "./components/CurrentWeather";
 import Forecast from "./components/Forecast";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
+import LocationPanel from "./components/LocationPanel";
 
 function App() {
+  const [openLocationPanel, setOpenLocationPanel] = useState(true);
+
   const date = new Date();
   const formatter = new Intl.DateTimeFormat("en-US", {
     day: "numeric",
@@ -13,9 +17,13 @@ function App() {
 
   return (
     <div className="relative m-auto flex h-screen min-h-[600px] max-w-lg flex-col pt-10">
-      <Navbar />
+      <Navbar onOpenLocationPanel={() => setOpenLocationPanel(true)} />
 
       <Sidebar />
+      <LocationPanel
+        open={openLocationPanel}
+        onClose={() => setOpenLocationPanel(false)}
+      />
 
       <CurrentWeather />
 

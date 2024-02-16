@@ -16,8 +16,6 @@ function CurrentWeather() {
     });
   }, []);
 
-  console.log(weather);
-
   return (
     <div className="flex h-full flex-col items-center justify-center">
       <div className="h-40 w-40">
