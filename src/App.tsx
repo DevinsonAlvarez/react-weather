@@ -6,7 +6,7 @@ import Sidebar from "./components/Sidebar";
 import ChangeLocation from "./components/ChangeLocation";
 
 function App() {
-  const [openLocationPanel, setOpenLocationPanel] = useState(true);
+  const [openLocationPanel, setOpenLocationPanel] = useState(false);
 
   const date = new Date();
   const formatter = new Intl.DateTimeFormat("en-US", {
