@@ -1,5 +1,5 @@
 export namespace OpenWeather {
-  export interface CurrentWeatherResponse {
+  export interface CurrentWeather {
     base: string;
     clouds: Clouds;
     cod: number;

@@ -1,20 +1,9 @@
 import { Icon } from "@iconify/react";
-import { getCurrentWeather } from "../services/OpenWeather.service";
-import { useEffect, useState } from "react";
-import { OpenWeather } from "../types";
+import { useContext } from "react";
+import { AppContext } from "../context/state";
 
 function CurrentWeather() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [weather, setWeather] = useState(
-    {} as OpenWeather.CurrentWeatherResponse,
-  );
-
-  useEffect(() => {
-    getCurrentWeather("Cúcuta").then((data) => {
-      setWeather(data);
-      setIsLoading(false);
-    });
-  }, []);
+  const { weather } = useContext(AppContext);
 
   return (
     <div className="flex h-full flex-col items-center justify-center">
@@ -22,25 +11,25 @@ function CurrentWeather() {
         <Icon icon="meteocons:clear-day-fill" fontSize="10rem" />
       </div>
       <h3 className="text-6xl">
-        {isLoading ? (
-          <Icon icon="svg-spinners:3-dots-fade" />
+        {weather.current?.main ? (
+          `${Math.round(weather.current.main.temp)}º`
         ) : (
-          `${Math.round(weather.main.temp)}º`
+          <Icon icon="svg-spinners:3-dots-fade" />
         )}
       </h3>
       <div className="mt-4 flex items-center text-lg">
         <span className="mr-4 text-lg">
-          {isLoading ? (
-            <Icon icon="svg-spinners:3-dots-fade" />
+          {weather.current?.main ? (
+            `min ${Math.round(weather.current.main.temp_min)}º`
           ) : (
-            `min ${Math.round(weather.main.temp_min)}º`
+            <Icon icon="svg-spinners:3-dots-fade" />
           )}
         </span>
         <span className="text-lg">
-          {isLoading ? (
-            <Icon icon="svg-spinners:3-dots-fade" className="text-xl" />
+          {weather.current?.main ? (
+            `max ${Math.round(weather.current.main.temp_max)}º`
           ) : (
-            `max ${Math.round(weather.main.temp_max)}º`
+            <Icon icon="svg-spinners:3-dots-fade" />
           )}
         </span>
       </div>

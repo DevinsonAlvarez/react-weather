@@ -1,9 +1,10 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Button from "./ui/Button";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getCityGeolocation } from "../services/OpenWeather.service";
 import { OpenWeather } from "../types";
 import useDebounce from "../hooks/useDebounce";
+import { AppContext } from "../context/state";
 
 interface Props {
   open: boolean;
@@ -11,6 +12,7 @@ interface Props {
 }
 
 function ChangeLocation({ open, onClose }: Props) {
+  const { weather } = useContext(AppContext);
   const [search, setSearch] = useState("");
   const [locations, setLocations] = useState<OpenWeather.Location[]>([]);
   const debouncedSearch = useDebounce(search);
@@ -48,11 +50,15 @@ function ChangeLocation({ open, onClose }: Props) {
         <section>
           <ul className="flex h-full flex-col gap-2 overflow-y-scroll text-xl">
             {locations.map((location) => (
-              <li
-                key={`${location.lat}-${location.lon}`}
-                className="rounded-xl bg-white/20 p-2"
-              >
-                {location.name}, {location.country}
+              <li key={`${location.lat}-${location.lon}`}>
+                <Button
+                  className="w-full bg-white/20 hover:bg-white/30 active:bg-white/50"
+                  onClick={() =>
+                    weather.setLocation(location.lat, location.lon)
+                  }
+                >
+                  {location.name}, {location.country}
+                </Button>
               </li>
             ))}
           </ul>

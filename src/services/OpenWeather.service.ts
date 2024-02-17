@@ -24,11 +24,13 @@ export async function getCityGeolocation(city: string = "", limit: number = 10) 
 }
 
 export async function getCurrentWeather(
-  city: string,
-): Promise<OpenWeather.CurrentWeatherResponse> {
+  lat: number,
+  lon: number
+): Promise<OpenWeather.CurrentWeather> {
   const uri = getApiUrl();
   uri.pathname += "data/2.5/weather";
-  uri.searchParams.append('q', city);
+  uri.searchParams.append('lat', lat.toString());
+  uri.searchParams.append('lon', lon.toString());
 
   const res = await fetch(uri);
 

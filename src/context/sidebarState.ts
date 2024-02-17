@@ -6,7 +6,7 @@ export interface SidebarState {
   close: () => void;
 }
 
-export default (): SidebarState => {
+export default function (): SidebarState {
   const [openSidebar, setOpenSidebar] = useState(false);
 
   return {
@@ -18,4 +18,4 @@ export default (): SidebarState => {
       setOpenSidebar(false);
     },
   };
-};
+}
