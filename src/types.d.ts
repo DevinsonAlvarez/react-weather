@@ -61,4 +61,12 @@ export namespace OpenWeather {
     deg: number;
     gust: number;
   }
+
+  export interface Location {
+    name: string;
+    country: string;
+    lat: number;
+    lon: number;
+    local_names: { [key: string]: string }
+  }
 }

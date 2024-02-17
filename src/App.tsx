@@ -3,7 +3,7 @@ import CurrentWeather from "./components/CurrentWeather";
 import Forecast from "./components/Forecast";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
-import LocationPanel from "./components/LocationPanel";
+import ChangeLocation from "./components/ChangeLocation";
 
 function App() {
   const [openLocationPanel, setOpenLocationPanel] = useState(true);
@@ -20,7 +20,7 @@ function App() {
       <Navbar onOpenLocationPanel={() => setOpenLocationPanel(true)} />
 
       <Sidebar />
-      <LocationPanel
+      <ChangeLocation
         open={openLocationPanel}
         onClose={() => setOpenLocationPanel(false)}
       />
