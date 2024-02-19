@@ -1,3 +1,4 @@
+import React from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Button from "./ui/Button";
 import { useContext, useEffect, useState } from "react";
@@ -49,17 +50,21 @@ function ChangeLocation({ open, onClose }: Props) {
         </label>
         <section>
           <ul className="flex h-full flex-col gap-2 overflow-y-scroll text-xl">
-            {locations.map((location) => (
-              <li key={`${location.lat}-${location.lon}`}>
-                <Button
-                  className="w-full bg-white/20 hover:bg-white/30 active:bg-white/50"
-                  onClick={() =>
-                    weather.setLocation(location.lat, location.lon)
-                  }
-                >
-                  {location.name}, {location.country}
-                </Button>
-              </li>
+            {locations.map((location, i) => (
+              <React.Fragment key={i}>
+                <li>
+                  <Button
+                    className="w-full bg-white/20 hover:bg-white/30 active:bg-white/50"
+                    onClick={() => {
+                      weather.setLocation(location.lat, location.lon);
+                      onClose();
+                      setSearch("");
+                    }}
+                  >
+                    {location.name}, {location.country}
+                  </Button>
+                </li>
+              </React.Fragment>
             ))}
           </ul>
         </section>
