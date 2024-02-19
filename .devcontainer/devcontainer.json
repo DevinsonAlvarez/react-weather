@@ -14,7 +14,7 @@
 	"runArgs": ["--name", "react-weather-devcontainer"],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "sudo chown -R $USER . && npm install",
+	"postCreateCommand": "npm install",
 
 	// Configure tool-specific properties.
 	"customizations": {
