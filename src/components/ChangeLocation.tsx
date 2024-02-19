@@ -2,8 +2,8 @@ import React from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Button from "./ui/Button";
 import { useContext, useEffect, useState } from "react";
+import { Location } from "../types";
 import { getCityGeolocation } from "../services/OpenWeather.service";
-import { OpenWeather } from "../types";
 import useDebounce from "../hooks/useDebounce";
 import { AppContext } from "../context/state";
 
@@ -15,7 +15,7 @@ interface Props {
 function ChangeLocation({ open, onClose }: Props) {
   const { weather } = useContext(AppContext);
   const [search, setSearch] = useState("");
-  const [locations, setLocations] = useState<OpenWeather.Location[]>([]);
+  const [locations, setLocations] = useState<Location[]>([]);
   const debouncedSearch = useDebounce(search);
 
   useEffect(() => {

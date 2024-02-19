@@ -1,4 +1,4 @@
-import { OpenWeather } from "../types";
+import { CurrentWeather, Forecast } from "../types";
 
 const API_KEY = "70ff3ea28d83f9cd9f4a2537fca81f99";
 
@@ -12,7 +12,10 @@ function getApiUrl() {
   return apiUrl;
 }
 
-export async function getCityGeolocation(city: string = "", limit: number = 10) {
+export async function getCityGeolocation(
+  city: string = "",
+  limit: number = 10,
+) {
   const uri = getApiUrl();
   uri.pathname += "geo/1.0/direct";
   uri.searchParams.append("q", city);
@@ -25,8 +28,8 @@ export async function getCityGeolocation(city: string = "", limit: number = 10) 
 
 export async function getCurrentWeather(
   lat: number,
-  lon: number
-): Promise<OpenWeather.CurrentWeather> {
+  lon: number,
+): Promise<CurrentWeather> {
   const uri = getApiUrl();
   uri.pathname += "data/2.5/weather";
   uri.searchParams.append('lat', lat.toString());
