@@ -32,8 +32,24 @@ export async function getCurrentWeather(
 ): Promise<CurrentWeather> {
   const uri = getApiUrl();
   uri.pathname += "data/2.5/weather";
-  uri.searchParams.append('lat', lat.toString());
-  uri.searchParams.append('lon', lon.toString());
+  uri.searchParams.append("lat", lat.toString());
+  uri.searchParams.append("lon", lon.toString());
+
+  const res = await fetch(uri);
+
+  return res.json();
+}
+
+export async function getForecast(
+  lat: number,
+  lon: number,
+  limit: number = 4,
+): Promise<Forecast> {
+  const uri = getApiUrl();
+  uri.pathname += "data/2.5/forecast";
+  uri.searchParams.append("lat", lat.toString());
+  uri.searchParams.append("lon", lon.toString());
+  uri.searchParams.append("cnt", limit.toString());
 
   const res = await fetch(uri);
 

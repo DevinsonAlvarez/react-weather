@@ -34,12 +34,8 @@ function App() {
           <span>{formattedDate}</span>
           <span>{date.getFullYear()}</span>
         </div>
-        {/* forecasts */}
-        <div className="flex h-[calc(100%-2rem)] flex-nowrap gap-4 overflow-x-scroll px-4 py-2">
-          {[1, 2, 3, 4, 5].map((num) => (
-            <Forecast key={num} />
-          ))}
-        </div>
+
+        <Forecast />
       </div>
     </div>
   );
