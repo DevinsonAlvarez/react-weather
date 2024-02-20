@@ -22,9 +22,9 @@ function CurrentWeather() {
           />
         )}
       </div>
-      <h3 className="text-xl">
+      <h3 className="text-xl capitalize">
         {weather.current.weather ? (
-          weather.current.weather[0].main
+          weather.current.weather[0].description
         ) : (
           <Icon icon="svg-spinners:3-dots-fade" />
         )}

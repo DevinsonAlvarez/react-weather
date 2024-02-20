@@ -7,13 +7,8 @@ import { getCityGeolocation } from "../services/OpenWeather.service";
 import useDebounce from "../hooks/useDebounce";
 import { AppContext } from "../context/state";
 
-interface Props {
-  open: boolean;
-  onClose: () => void;
-}
-
-function ChangeLocation({ open, onClose }: Props) {
-  const { weather } = useContext(AppContext);
+function ChangeLocation() {
+  const { weather, ui } = useContext(AppContext);
   const [search, setSearch] = useState("");
   const [locations, setLocations] = useState<Location[]>([]);
   const debouncedSearch = useDebounce(search);
@@ -29,15 +24,13 @@ function ChangeLocation({ open, onClose }: Props) {
   }, [debouncedSearch]);
 
   return (
-    <div
-      className={`fixed left-0 top-0 z-10 h-screen w-full p-2 backdrop-blur-sm ${open ? "visible" : "hidden"}`}
-    >
-      <search className="m-auto h-full w-full max-w-lg rounded-xl bg-white/20 p-4">
+    <div className="fixed left-0 top-0 z-10 h-screen w-full p-2">
+      <search className="m-auto h-full w-full max-w-lg rounded-xl bg-white/30 p-4 shadow-lg backdrop-blur">
         <label
           htmlFor="searchLocation"
           className="mb-6 flex items-center justify-center"
         >
-          <Button onClick={onClose}>
+          <Button onClick={ui.locationPanel.close}>
             <Icon icon="line-md:close-small" className="text-2xl" />
           </Button>
           <input
@@ -54,10 +47,10 @@ function ChangeLocation({ open, onClose }: Props) {
               <React.Fragment key={i}>
                 <li>
                   <Button
-                    className="w-full bg-white/20 hover:bg-white/30 active:bg-white/50"
+                    className="w-full bg-black/10 shadow hover:bg-black/20 active:bg-black/30"
                     onClick={() => {
                       weather.setLocation(location.lat, location.lon);
-                      onClose();
+                      ui.locationPanel.close();
                       setSearch("");
                     }}
                   >

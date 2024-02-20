@@ -1,10 +1,12 @@
 import { createContext } from "react";
-import { SidebarState } from "./sidebarState";
 import { WeatherState } from "./weatherState";
+import { UiState } from "./uiState";
 
 export interface AppState {
-  sidebar: SidebarState;
   weather: WeatherState;
+  ui: UiState;
+  lang: string;
+  setLang: (lang: string) => void;
 }
 
 export const AppContext = createContext({} as AppState);

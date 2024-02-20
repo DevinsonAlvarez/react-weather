@@ -8,6 +8,7 @@ function getApiUrl() {
   const apiUrl = new URL(BASE_URL);
   apiUrl.searchParams.append("appid", API_KEY);
   apiUrl.searchParams.append("units", "metric");
+  apiUrl.searchParams.append("lang", localStorage.getItem('lang') || navigator.language);
 
   return apiUrl;
 }

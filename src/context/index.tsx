@@ -1,14 +1,27 @@
-import { type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { AppContext } from "./state";
-import sidebarState from "./sidebarState";
 import weatherState from "./weatherState";
+import uiState from "./uiState";
 
 function AppProvider({ children }: { children: ReactNode }) {
-  const sidebar = sidebarState();
   const weather = weatherState();
+  const ui = uiState();
+  const [language, setLanguage] = useState(
+    localStorage.getItem("lang") || navigator.language,
+  );
 
   return (
-    <AppContext.Provider value={{ sidebar, weather }}>
+    <AppContext.Provider
+      value={{
+        weather,
+        ui,
+        lang: language,
+        setLang(lang) {
+          setLanguage(lang);
+          localStorage.setItem("lang", lang);
+        },
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

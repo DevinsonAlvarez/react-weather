@@ -6,7 +6,7 @@ import WeatherIcon from "./ui/WeatherIcon";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
 function Forecast() {
-  const { weather } = useContext(AppContext);
+  const { weather, lang } = useContext(AppContext);
   const currentWeather = weather.current;
 
   const [forecast, setForecast] = useState<Forecast>({});
@@ -19,7 +19,7 @@ function Forecast() {
     }
   }, [currentWeather]);
 
-  const formatter = new Intl.DateTimeFormat("en-US", {
+  const formatter = new Intl.DateTimeFormat(lang, {
     hour12: true,
     hour: "numeric",
   });
@@ -38,7 +38,9 @@ function Forecast() {
                 weatherId={prediction.weather[0].id}
                 fontSize="7rem"
               />
-              <div className="text-center">{prediction.weather[0].main}</div>
+              <div className="text-center capitalize">
+                {prediction.weather[0].description}
+              </div>
             </div>
             <div className="text-lg">
               {formatter.format(prediction.dt * 1000)}
