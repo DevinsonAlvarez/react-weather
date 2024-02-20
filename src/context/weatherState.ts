@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { OpenWeather } from "../types";
+import { CurrentWeather } from "../types";
 import { getCurrentWeather } from "../services/OpenWeather.service";
 
 export interface WeatherState {
-  current: Partial<OpenWeather.CurrentWeather>;
+  current: Partial<CurrentWeather>;
   setLocation: (lat: number, lon: number) => void
 }
 
 export default function (): WeatherState {
   const [currentWeather, setCurrentWeather] = useState(
-    {} as OpenWeather.CurrentWeather,
+    {} as CurrentWeather,
   );
 
   useEffect(() => {
