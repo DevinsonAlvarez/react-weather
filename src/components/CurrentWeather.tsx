@@ -1,6 +1,7 @@
 import { Icon } from "@iconify/react";
 import { useContext } from "react";
 import { AppContext } from "../context/state";
+import WeatherIcon from "./ui/WeatherIcon";
 
 function CurrentWeather() {
   const { weather } = useContext(AppContext);
@@ -8,7 +9,18 @@ function CurrentWeather() {
   return (
     <div className="flex h-full flex-col items-center justify-center">
       <div className="h-40 w-40">
-        <Icon icon="meteocons:clear-day-fill" fontSize="10rem" />
+        {weather.current.weather ? (
+          <WeatherIcon
+            weatherId={weather.current.weather[0].id}
+            fontSize="10rem"
+          />
+        ) : (
+          <Icon
+            icon="svg-spinners:3-dots-fade"
+            fontSize="5rem"
+            className="m-auto"
+          />
+        )}
       </div>
       <h3 className="text-6xl">
         {weather.current?.main ? (

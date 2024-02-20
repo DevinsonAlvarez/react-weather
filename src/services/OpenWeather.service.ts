@@ -43,7 +43,7 @@ export async function getCurrentWeather(
 export async function getForecast(
   lat: number,
   lon: number,
-  limit: number = 4,
+  limit: number = 5,
 ): Promise<Forecast> {
   const uri = getApiUrl();
   uri.pathname += "data/2.5/forecast";
