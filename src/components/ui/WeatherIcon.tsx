@@ -13,10 +13,16 @@ function WeatherIcon({ weatherId, fontSize }: Props) {
       iconName = "meteocons:thunderstorms-fill";
     } else if (/^3[0-9]{2}$/.test(weatherId.toString())) {
       iconName = "meteocons:drizzle-fill";
-    } else if (/^5[0-9]{2}$/.test(weatherId.toString())) {
-      iconName = "meteocons:rain-fill";
-    } else if (/^6[0-9]{2}$/.test(weatherId.toString())) {
+    } else if (/^511$/.test(weatherId.toString())) {
       iconName = "meteocons:snow-fill";
+    } else if (/^52[0-9]$/.test(weatherId.toString())) {
+      iconName = "meteocons:raindrop-fill";
+    } else if (/^53[0-9]$/.test(weatherId.toString())) {
+      iconName = "meteocons:raindrop-fill";
+    } else if (/^5[0-9]{2}$/.test(weatherId.toString())) {
+      iconName = "meteocons:raindrop-fill";
+    } else if (/^6[0-9]{2}$/.test(weatherId.toString())) {
+      iconName = "meteocons:snowflake-fill";
     } else if (/^7[0-9]{2}$/.test(weatherId.toString())) {
       iconName = "meteocons:mist-fill";
     } else if (/^800$/.test(weatherId.toString())) {

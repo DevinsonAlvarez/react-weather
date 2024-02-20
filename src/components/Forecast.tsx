@@ -38,10 +38,11 @@ function Forecast() {
                 weatherId={prediction.weather[0].id}
                 fontSize="7rem"
               />
+              <div className="text-center">{prediction.weather[0].main}</div>
             </div>
-            <span className="text-lg">
+            <div className="text-lg">
               {formatter.format(prediction.dt * 1000)}
-            </span>
+            </div>
           </div>
         ))
       ) : (

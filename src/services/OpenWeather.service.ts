@@ -1,4 +1,4 @@
-import { CurrentWeather, Forecast } from "../types";
+import { CurrentWeather, Forecast, Location } from "../types";
 
 const API_KEY = "70ff3ea28d83f9cd9f4a2537fca81f99";
 
@@ -15,7 +15,7 @@ function getApiUrl() {
 export async function getCityGeolocation(
   city: string = "",
   limit: number = 10,
-) {
+): Promise<Location[]> {
   const uri = getApiUrl();
   uri.pathname += "geo/1.0/direct";
   uri.searchParams.append("q", city);

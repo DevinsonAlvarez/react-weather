@@ -16,7 +16,7 @@ function Navbar({ onOpenLocationPanel }: Props) {
         <Icon icon="line-md:menu" className="text-2xl" />
       </Button>
       <Button onClick={onOpenLocationPanel}>
-        {weather.current?.name ? (
+        {weather.current ? (
           weather.current.name
         ) : (
           <Icon icon="svg-spinners:3-dots-fade" />
