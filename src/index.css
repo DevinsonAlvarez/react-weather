@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*::-webkit-scrollbar {
+  @apply h-2 w-2;
+}
+
+*::-webkit-scrollbar-track {
+  @apply rounded-xl;
+}
+
+*::-webkit-scrollbar-thumb {
+  @apply rounded-xl bg-white/20 hover:bg-white/50 active:bg-white;
+}
