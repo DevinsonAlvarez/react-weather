@@ -8,19 +8,28 @@ function getApiUrl() {
   const apiUrl = new URL(BASE_URL);
   apiUrl.searchParams.append("appid", API_KEY);
   apiUrl.searchParams.append("units", "metric");
-  apiUrl.searchParams.append("lang", localStorage.getItem('lang') || navigator.language);
+  apiUrl.searchParams.append(
+    "lang",
+    localStorage.getItem("lang") || navigator.language,
+  );
 
   return apiUrl;
 }
 
 export async function getCityGeolocation(
-  city: string = "",
+  location: string | { lat: number; lon: number } = "",
   limit: number = 10,
 ): Promise<Location[]> {
   const uri = getApiUrl();
   uri.pathname += "geo/1.0/direct";
-  uri.searchParams.append("q", city);
   uri.searchParams.append("limit", limit.toString());
+
+  if (typeof location === "object") {
+    uri.searchParams.append("lat", location.lat.toString());
+    uri.searchParams.append("lon", location.lon.toString());
+  } else {
+    uri.searchParams.append("q", location);
+  }
 
   const res = await fetch(uri);
 

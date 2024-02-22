@@ -49,7 +49,7 @@ function ChangeLocation() {
                   <Button
                     className="w-full bg-black/10 shadow hover:bg-black/20 active:bg-black/30"
                     onClick={() => {
-                      weather.setLocation(location.lat, location.lon);
+                      weather.setLocation(location);
                       ui.locationPanel.close();
                       setSearch("");
                     }}
