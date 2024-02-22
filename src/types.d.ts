@@ -118,7 +118,7 @@ export interface Prediction {
   snow?: Snow;
   sys: {
     /** Part of the day (n - night, d - day) */
-    pod: "d" | "n"
+    pod: "d" | "n";
   };
   /** Visibility, meter. The maximum value of the visibility is 10 km */
   visibility: number;

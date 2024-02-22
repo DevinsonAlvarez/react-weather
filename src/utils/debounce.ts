@@ -1,5 +1,5 @@
 /**
- * 
+ *
  * @param fn callback function
  * @param t time in milliseconds
  * @param args additional arguments which are passed through to the callback function
